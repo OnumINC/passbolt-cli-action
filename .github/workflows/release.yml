@@ -50,7 +50,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ env.ORGANIZATION }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install QEMU
         uses: docker/setup-qemu-action@v1
