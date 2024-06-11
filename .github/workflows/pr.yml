@@ -11,6 +11,9 @@ on:
 
 jobs:
   pr_build_and_publish:
+    permissions:
+      packages: write
+
     runs-on: [ubuntu-latest]
     if: github.event.pull_request.draft == false
     steps:
@@ -31,7 +34,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ env.ORGANIZATION }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install QEMU
         uses: docker/setup-qemu-action@v1

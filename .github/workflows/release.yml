@@ -9,6 +9,8 @@ on:
   push:
     branches: ["main"]
 
+concurrency: release-in-progress
+
 jobs:
   build_and_create_release:
     permissions:
