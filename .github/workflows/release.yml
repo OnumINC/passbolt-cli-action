@@ -11,6 +11,10 @@ on:
 
 jobs:
   build_and_create_release:
+    permissions:
+      contents: write
+      packages: write
+
     runs-on: [ubuntu-latest]
     steps:
       - name: Login to gh
