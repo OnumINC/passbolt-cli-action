@@ -14,6 +14,12 @@ inputs:
   args:
     description: Additional arguments
     required: false
-  test:
-    description: test argument
-    required: false
+  passbolt_url:
+    description: The URL of the Passbolt server.
+    required: true
+  password:
+    description: Passbolt user's password.
+    required: true
+  privatekey:
+    description: Passbolt user's private key.
+    required: true
