@@ -1,6 +1,6 @@
 FROM alpine:3.20 AS base
 
-RUN apk update
+RUN apk update && apk add bash
 
 FROM base AS builder
 
