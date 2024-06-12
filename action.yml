@@ -1,0 +1,25 @@
+name: Passbolt CLI
+description: >
+  Passbolt command-line interface to interact with a Passbolt server via Github actions
+  in an easy way.
+branding:
+  icon: check
+  color: green
+runs:
+  using: docker
+  image: Dockerfile
+  entrypoint: "/entrypoint.sh"
+  post-entrypoint: "/cleanup.sh"
+inputs:
+  args:
+    description: Additional arguments
+    required: false
+  passbolt_url:
+    description: The URL of the Passbolt server.
+    required: true
+  password:
+    description: Passbolt user's password.
+    required: true
+  privatekey:
+    description: Passbolt user's private key.
+    required: true
