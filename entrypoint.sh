@@ -25,7 +25,7 @@ if [[ -z "${INPUT_PRIVATEKEY}" ]]; then
 fi
 
 # Configure passbolt CLI
-${PASSBOLT_CLI} --serverAddress "${INPUT_PASSBOLT_URL}" --userPassword "${INPUT_PASSWORD}" --userPrivateKey "${INPUT_PRIVATEKEY}" >/dev/null 2>&1
+${PASSBOLT_CLI} configure --serverAddress "${INPUT_PASSBOLT_URL}" --userPassword "${INPUT_PASSWORD}" --userPrivateKey "${INPUT_PRIVATEKEY}" >/dev/null 2>&1
 
 if [ $? -ne 0 ]; then
 	echo "ERROR: Failed to configure passbolt CLI"
@@ -33,4 +33,4 @@ if [ $? -ne 0 ]; then
 fi
 
 # Call cli with args
-${PASSBOLT_CLI} "$(echo ${INPUT_ARGS} | tr -d '\n\r')"
+${PASSBOLT_CLI} ${INPUT_ARGS}
