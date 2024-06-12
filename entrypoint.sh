@@ -33,4 +33,4 @@ if [ $? -ne 0 ]; then
 fi
 
 # Call cli with args
-${PASSBOLT_CLI} "${INPUT_ARGS}"
+${PASSBOLT_CLI} "$(echo ${INPUT_ARGS} | tr -d '\n\r')"
