@@ -2,7 +2,7 @@ name: release
 
 env:
   REGISTRY: ghcr.io
-  ORGANIZATION: tuxillo
+  ORGANIZATION: onuminc
   IMAGE_NAME: passbolt-cli-action
 
 on:
