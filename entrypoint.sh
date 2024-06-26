@@ -47,5 +47,3 @@ echo "passbolt_response<<PBOLTEOF" >>${GITHUB_OUTPUT}
 ${PASSBOLT_CLI} $@ >>${GITHUB_OUTPUT}
 
 echo "PBOLTEOF" >>${GITHUB_OUTPUT}
-
-cat $GITHUB_OUTPUT
