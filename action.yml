@@ -11,7 +11,7 @@ runs:
   entrypoint: "/entrypoint.sh"
   post-entrypoint: "/cleanup.sh"
 outputs:
-  stdout:
+  passbolt_response:
     description: stdout from the passbolt-cli command
 
 inputs:

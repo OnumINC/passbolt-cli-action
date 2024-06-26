@@ -39,7 +39,13 @@ fi
 # set input args as script parameters
 set -- ${INPUT_ARGS}
 
-# Call cli with args
-${PASSBOLT_CLI} $@ >>${TMP}/stdout
+# https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+# multiline GITHUB_OUTPUT
+echo "passbolt_response<<PBOLTEOF" >>${GITHUB_OUTPUT}
 
-echo "stdout=$(cat ${TMP}/stdout)" >>${GITHUB_OUTPUT}
+# Call cli with args
+${PASSBOLT_CLI} $@ >>${GITHUB_OUTPUT}
+
+echo "PBOLTEOF" >>${GITHUB_OUTPUT}
+
+cat $GITHUB_OUTPUT
