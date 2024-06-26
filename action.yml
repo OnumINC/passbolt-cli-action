@@ -10,6 +10,10 @@ runs:
   image: Dockerfile
   entrypoint: "/entrypoint.sh"
   post-entrypoint: "/cleanup.sh"
+outputs:
+  stdout:
+    description: stdout from the passbolt-cli command
+
 inputs:
   args:
     description: Additional arguments

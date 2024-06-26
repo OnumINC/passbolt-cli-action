@@ -11,6 +11,7 @@ on:
     paths-ignore:
       - "./docker"
       - ".github/workflows/passbolt-cli-docker.yml"
+      - "**.md"
 
 concurrency: release-in-progress
 

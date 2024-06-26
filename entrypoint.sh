@@ -3,6 +3,7 @@
 set -e
 
 PASSBOLT_CLI="/usr/local/bin/go-passbolt-cli"
+TMP="${RUNNER_TEMP:-/tmp}/pbolt"
 
 if [[ -z "${INPUT_ARGS}" ]]; then
 	echo "ERROR! No args were provided."
@@ -24,6 +25,9 @@ if [[ -z "${INPUT_PRIVATEKEY}" ]]; then
 	exit 255
 fi
 
+# Temp dir must exist
+mkdir -p ${TMP}
+
 # Configure passbolt CLI
 ${PASSBOLT_CLI} configure --serverAddress "${INPUT_PASSBOLT_URL}" --userPassword "${INPUT_PASSWORD}" --userPrivateKey "${INPUT_PRIVATEKEY}" >/dev/null 2>&1
 
@@ -36,4 +40,6 @@ fi
 set -- ${INPUT_ARGS}
 
 # Call cli with args
-${PASSBOLT_CLI} $@
+${PASSBOLT_CLI} $@ >>${TMP}/stdout
+
+echo "stdout=$(cat ${TMP}/stdout)" >>${GITHUB_OUTPUT}
