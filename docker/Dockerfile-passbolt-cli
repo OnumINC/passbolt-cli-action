@@ -12,3 +12,4 @@ FROM base AS final
 COPY --from=builder /root/go/bin/go-passbolt-cli /usr/local/bin
 
 ENTRYPOINT ["/usr/local/bin/go-passbolt-cli"]
+

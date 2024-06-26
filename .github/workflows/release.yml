@@ -8,6 +8,9 @@ env:
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - "./docker"
+      - ".github/workflows/passbolt-cli-docker.yml"
 
 concurrency: release-in-progress
 
