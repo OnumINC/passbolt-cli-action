@@ -32,5 +32,8 @@ if [ $? -ne 0 ]; then
 	exit 255
 fi
 
+# set input args as script parameters
+set -- ${INPUT_ARGS}
+
 # Call cli with args
-${PASSBOLT_CLI} ${INPUT_ARGS}
+${PASSBOLT_CLI} $@
