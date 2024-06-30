@@ -50,6 +50,4 @@ cat ${TMPF} >>${GITHUB_OUTPUT}
 echo "PBOLTEOF1" >>${GITHUB_OUTPUT}
 
 # base64 output
-echo "outb64<<PBOLTEOF2" >>${GITHUB_OUTPUT}
-cat ${TMPF} | base64 -w0 >>${GITHUB_OUTPUT}
-echo "PBOLTEOF2" >>${GITHUB_OUTPUT}
+echo "outb64=$(cat ${TMPF} | base64 -w0)" >>${GITHUB_OUTPUT}
