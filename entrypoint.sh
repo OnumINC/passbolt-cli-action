@@ -27,7 +27,7 @@ fi
 
 # Temp dir must exist
 mkdir -p ${TMP}
-TMPF=$(mktemp -p ${TMP} -t passbolt.XXXX)
+TMPF=$(mktemp -p ${TMP})
 
 # Configure passbolt CLI
 ${PASSBOLT_CLI} configure --serverAddress "${INPUT_PASSBOLT_URL}" --userPassword "${INPUT_PASSWORD}" --userPrivateKey "${INPUT_PRIVATEKEY}" >/dev/null 2>&1
