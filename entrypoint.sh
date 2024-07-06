@@ -51,3 +51,6 @@ echo "PBOLTEOF1" >>${GITHUB_OUTPUT}
 
 # base64 output
 echo "outb64=$(cat ${TMPF} | base64 -w0)" >>${GITHUB_OUTPUT}
+
+# tmpf file out
+echo "out_file=$(realpath ${TMPF})" >>${GITHUB_OUTPUT}
