@@ -3,7 +3,7 @@
 set -e
 
 PASSBOLT_CLI="/usr/local/bin/go-passbolt-cli"
-TMP="${RUNNER_TEMP:-/tmp}/pbolt"
+TMP="/github/home/pbolt"
 
 if [[ -z "${INPUT_ARGS}" ]]; then
 	echo "ERROR! No args were provided."
@@ -29,6 +29,9 @@ fi
 mkdir -p ${TMP}
 TMPF=$(mktemp -p ${TMP})
 
+# mktemp will use 600 as permissions, allow u+o to read
+chmod 644 ${TMPF}
+
 # Configure passbolt CLI
 ${PASSBOLT_CLI} configure --serverAddress "${INPUT_PASSBOLT_URL}" --userPassword "${INPUT_PASSWORD}" --userPrivateKey "${INPUT_PRIVATEKEY}" >/dev/null 2>&1
 
@@ -53,4 +56,7 @@ echo "PBOLTEOF1" >>${GITHUB_OUTPUT}
 echo "outb64=$(cat ${TMPF} | base64 -w0)" >>${GITHUB_OUTPUT}
 
 # tmpf file out
-echo "out_file=$(realpath ${TMPF})" >>${GITHUB_OUTPUT}
+# XXX: There is a problem with RUNNER_TEMP and the way it's mounted in the docker vs
+# the runner. See https://github.com/actions/runner/issues/1984
+# For now we workaround it by hardcoding the path
+echo "out_file=/runner/_work/_temp/_github_home/pbolt/$(basename ${TMPF})" >>${GITHUB_OUTPUT}
