@@ -6,7 +6,7 @@ Passbolt cli github action
 Example:
 
 ```
-      - uses: OnumINC/passbolt-cli-action@v0.2.2
+      - uses: OnumINC/passbolt-cli-action@v0.8.1
         with:
           passbolt_url: ${{ secrets.PASSBOLT_URL }}
           password: ${{ secrets.PASSBOLT_PASS }}
