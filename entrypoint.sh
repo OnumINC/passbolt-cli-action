@@ -6,23 +6,23 @@ PASSBOLT_CLI="/usr/local/bin/go-passbolt-cli"
 TMP="/github/home/pbolt"
 
 if [[ -z "${INPUT_ARGS}" ]]; then
-	echo "ERROR! No args were provided."
-	exit 255
+  echo "ERROR! No args were provided."
+  exit 255
 fi
 
 if [[ -z "${INPUT_PASSBOLT_URL}" ]]; then
-	echo "ERROR! No passbolt URL was provided."
-	exit 255
+  echo "ERROR! No passbolt URL was provided."
+  exit 255
 fi
 
 if [[ -z "${INPUT_PASSWORD}" ]]; then
-	echo "ERROR! No user password was provided."
-	exit 255
+  echo "ERROR! No user password was provided."
+  exit 255
 fi
 
 if [[ -z "${INPUT_PRIVATEKEY}" ]]; then
-	echo "ERROR! No user private key string was provided."
-	exit 255
+  echo "ERROR! No user private key string was provided."
+  exit 255
 fi
 
 # Temp dir must exist
@@ -36,8 +36,8 @@ chmod 644 ${TMPF}
 ${PASSBOLT_CLI} configure --serverAddress "${INPUT_PASSBOLT_URL}" --userPassword "${INPUT_PASSWORD}" --userPrivateKey "${INPUT_PRIVATEKEY}" >/dev/null 2>&1
 
 if [ $? -ne 0 ]; then
-	echo "ERROR: Failed to configure passbolt CLI"
-	exit 255
+  echo "ERROR: Failed to configure passbolt CLI"
+  exit 255
 fi
 
 # set input args as script parameters
@@ -59,4 +59,4 @@ echo "outb64=$(cat ${TMPF} | base64 -w0)" >>${GITHUB_OUTPUT}
 # XXX: There is a problem with RUNNER_TEMP and the way it's mounted in the docker vs
 # the runner. See https://github.com/actions/runner/issues/1984
 # For now we workaround it by hardcoding the path
-echo "out_file=/runner/_work/_temp/_github_home/pbolt/$(basename ${TMPF})" >>${GITHUB_OUTPUT}
+echo "out_file=${HOME}/_work/_temp/_github_home/pbolt/$(basename ${TMPF})" >>${GITHUB_OUTPUT}
