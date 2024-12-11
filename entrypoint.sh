@@ -58,5 +58,6 @@ echo "outb64=$(cat ${TMPF} | base64 -w0)" >>${GITHUB_OUTPUT}
 # tmpf file out
 # XXX: There is a problem with RUNNER_TEMP and the way it's mounted in the docker vs
 # the runner. See https://github.com/actions/runner/issues/1984
-# For now we workaround it by hardcoding the path
-echo "out_file=${HOME}/_work/_temp/_github_home/pbolt/$(basename ${TMPF})" >>${GITHUB_OUTPUT}
+# For now we workaround it by hardcoding the relative path, we cannot hardcode runner's
+# HOME since we are in a docker!
+echo "out_file=_work/_temp/_github_home/pbolt/$(basename ${TMPF})" >>${GITHUB_OUTPUT}
