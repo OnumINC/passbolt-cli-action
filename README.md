@@ -1,4 +1,5 @@
 # passbolt-cli-action
+
 Passbolt cli github action
 
 # How to use
@@ -6,7 +7,7 @@ Passbolt cli github action
 Example:
 
 ```
-      - uses: OnumINC/passbolt-cli-action@v0.8.1
+      - uses: OnumINC/passbolt-cli-action@v0.8.2
         with:
           passbolt_url: ${{ secrets.PASSBOLT_URL }}
           password: ${{ secrets.PASSBOLT_PASS }}
@@ -14,6 +15,3 @@ Example:
           args: |
             list resource
 ```
-
-
-
